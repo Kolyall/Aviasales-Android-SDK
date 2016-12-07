@@ -1,4 +1,4 @@
-package ru.aviasales.example;
+package ru.aviasales.alllife;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

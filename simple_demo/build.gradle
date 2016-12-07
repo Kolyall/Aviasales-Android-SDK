@@ -18,7 +18,7 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        applicationId "ru.aviasales.example"
+        applicationId "ru.aviasales.alllife"
         minSdkVersion 11
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

@@ -37,9 +37,11 @@ import ru.aviasales.template.utils.Utils;
 public class SearchFormFragment extends BaseFragment implements SimpleSearchFormView.SimpleSearchFormInterface,
 		ComplexSearchFormView.ComplexSearchFormInterface {
 
-	private final static String EXTRA_DIALOG_SEGMENT_SHOWED = "extra_dialog_segment_showed";
-	private final static String EXTRA_IS_COMPLEX_SEARCH_SELECTED = "extra_is_complex_search_selected";
+	private static final int VIEW_LAYOUT = R.layout.search_form_fragment;
 
+	private final static String EXTRA_DIALOG_SEGMENT_SHOWED = "extra_dialog_segment_showed";
+
+	private final static String EXTRA_IS_COMPLEX_SEARCH_SELECTED = "extra_is_complex_search_selected";
 	private final static int DIALOG_DEPART_SEGMENT_NUMBER = 0;
 	private final static int DIALOG_RETURN_SEGMENT_NUMBER = 1;
 
@@ -84,7 +86,7 @@ public class SearchFormFragment extends BaseFragment implements SimpleSearchForm
 			isComplexSearchSelected = savedInstanceState.getBoolean(EXTRA_IS_COMPLEX_SEARCH_SELECTED);
 		}
 
-		ViewGroup layout = (ViewGroup) inflater.inflate(R.layout.search_form_fragment, container, false);
+		ViewGroup layout = (ViewGroup) inflater.inflate(VIEW_LAYOUT, container, false);
 
 		setHasOptionsMenu(true);
 		showActionBar(true);

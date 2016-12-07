@@ -1,4 +1,4 @@
-package ru.aviasales.example;
+package ru.aviasales.alllife;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -10,18 +10,17 @@ import ru.aviasales.core.identification.IdentificationData;
 import ru.aviasales.template.ui.fragment.AviasalesFragment;
 
 public class MainActivity extends AppCompatActivity {
-
-	// replace with your travel payout credentials
-	private final static String TRAVEL_PAYOUTS_MARKER = "your_travel_payouts_marker";
-	private final static String TRAVEL_PAYOUTS_TOKEN = "your_travel_payouts_token";
+	private static final String TAG = MainActivity.class.getSimpleName();
+	private static final int VEIW_LAYOUT = R.layout.activity_main;
+	private static final int FRAGMENT_CONTAINER = R.id.fragment_place;
 	private AviasalesFragment aviasalesFragment;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		AviasalesSDK.getInstance().init(this, new IdentificationData(TRAVEL_PAYOUTS_MARKER, TRAVEL_PAYOUTS_TOKEN));
-		setContentView(R.layout.activity_main);
+		AviasalesSDK.getInstance().init(this, new IdentificationData(getString(R.string.travel_payouts_marker), getString(R.string.travel_payouts_token)));
+		setContentView(VEIW_LAYOUT);
 
 		init();
 	}
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 		}
 
 		FragmentTransaction fragmentTransaction = fm.beginTransaction();
-		fragmentTransaction.replace(R.id.fragment_place, aviasalesFragment, AviasalesFragment.TAG);
+		fragmentTransaction.replace(FRAGMENT_CONTAINER, aviasalesFragment, AviasalesFragment.TAG);
 		fragmentTransaction.commit();
 	}
 

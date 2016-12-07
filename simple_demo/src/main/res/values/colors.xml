@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
 	<color name="colorAsPrimary">#90A4AE</color>
 	<color name="colorAsPrimaryDark">#78909C</color>
-	<color name="colorAviasalesMain">#00B0DD</color>
+	<color name="colorAviasalesMain">@color/color_primary</color>
+
+	<color name="color_primary">#3F51B5</color>
+	<color name="color_primary_dark">#3F51B5</color>
+	<color name="color_control_activated">#3F51B5</color>
 </resources>

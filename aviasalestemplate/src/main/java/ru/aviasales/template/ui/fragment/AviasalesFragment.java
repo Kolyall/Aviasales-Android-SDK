@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
+import java.util.concurrent.TimeUnit;
+
 import ru.aviasales.core.search.params.SearchParams;
 import ru.aviasales.core.search_airports.object.PlaceData;
 import ru.aviasales.template.R;
@@ -22,18 +24,18 @@ import ru.aviasales.template.ui.listener.AviasalesImpl;
 import ru.aviasales.template.ui.model.SearchFormData;
 import ru.aviasales.template.utils.Utils;
 
-import java.util.concurrent.TimeUnit;
-
 public class AviasalesFragment extends Fragment implements AviasalesImpl {
+	public static final String TAG = AviasalesFragment.class.getSimpleName();
+	private static final int VIEW_LAYOUT = R.layout.aviasales_fragment_layout;
 
-	public final static String TAG = "aviasales_fragment";
 	private final static String TAG_CHILD = "aviasales_child_fragment";
-	private static final String SEARCH_PARAMS_IS_UPDATED = "searh_params_is_updated";
 
+	private static final String SEARCH_PARAMS_IS_UPDATED = "searh_params_is_updated";
 	private final static int CACHE_SIZE = 20 * 1024 * 1024;
 	private final static int CACHE_FILE_COUNT = 100;
 	private final static int MEMORY_CACHE_SIZE = 5 * 1024 * 1024;
 	private static final String AD_SHOWED_ONCE = "AD_SHOWED_ONCE";
+	private static final int FRAGMENT_CONTAINER = R.id.fragment_child_place;
 
 	private FragmentManager fragmentManager;
 
@@ -61,7 +63,7 @@ public class AviasalesFragment extends Fragment implements AviasalesImpl {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		rootView = inflater.inflate(R.layout.aviasales_fragment_layout, container, false);
+		rootView = inflater.inflate(VIEW_LAYOUT, container, false);
 		if (!adShowedOnce) {
 			adShowedOnce = true;
 			rootView.postDelayed(new Runnable() {
@@ -101,7 +103,7 @@ public class AviasalesFragment extends Fragment implements AviasalesImpl {
 	public void startFragment(BaseFragment fragment, boolean shouldAddToBackStack) {
 
 		FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-		fragmentTransaction.replace(R.id.fragment_child_place, fragment, fragment.getClass().getSimpleName());
+		fragmentTransaction.replace(FRAGMENT_CONTAINER, fragment, fragment.getClass().getSimpleName());
 		if (shouldAddToBackStack) {
 			fragmentTransaction.addToBackStack(fragment.getClass().getSimpleName());
 		}
@@ -132,7 +134,7 @@ public class AviasalesFragment extends Fragment implements AviasalesImpl {
 		Fragment fragment;
 		if ((fragmentManager.findFragmentByTag(TAG_CHILD)) == null) {
 			fragment = SearchFormFragment.newInstance();
-			fragmentManager.beginTransaction().replace(R.id.fragment_child_place, fragment, TAG_CHILD).commit();
+			fragmentManager.beginTransaction().replace(FRAGMENT_CONTAINER, fragment, TAG_CHILD).commit();
 		}
 
 	}
