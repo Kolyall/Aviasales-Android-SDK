@@ -13,6 +13,8 @@ repositories {
     }
 }
 
+def gitBranch = 'git rev-parse --abbrev-ref HEAD'.execute().text.trim()
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -28,6 +30,7 @@ android {
         debug {
             ext.betaDistributionNotifications = true
             ext.betaDistributionGroupAliases = "as-android-dev"
+            versionNameSuffix "debug"
         }
 
         release {
@@ -38,6 +41,23 @@ android {
 
     dexOptions {
         javaMaxHeapSize "4g"
+    }
+}
+
+android.applicationVariants.all { variant ->
+    variant.outputs.each { output ->
+        def suffix = ""
+        if (gitBranch != "master" && gitBranch != "HEAD") {
+            suffix += "-${gitBranch}"
+        }
+        if (variant.buildType.versionNameSuffix) {
+            suffix += "-${variant.buildType.versionNameSuffix}"
+        }
+        def newName = "${android.defaultConfig.applicationId}-v${android.defaultConfig.versionName}-vc${android.defaultConfig.versionCode}${suffix}"
+
+        //noinspection GroovyAssignabilityCheck
+        output.outputFile = new File(output.outputFile.parentFile, newName + ".apk")
+        print "APK Name: ${output.outputFile}"
     }
 }
 

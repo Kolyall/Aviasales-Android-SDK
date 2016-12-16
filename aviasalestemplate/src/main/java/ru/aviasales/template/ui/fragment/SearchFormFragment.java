@@ -136,6 +136,7 @@ public class SearchFormFragment extends BaseFragment implements SimpleSearchForm
 		btnSearch.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
+				if (true) return; // TODO: 16.12.2016 added by Nick Unuchek:
 				if (getActivity() == null) return;
 
 
