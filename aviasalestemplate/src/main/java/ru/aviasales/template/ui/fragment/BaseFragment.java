@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 
 import ru.aviasales.template.ui.dialog.BaseDialogFragment;
 import ru.aviasales.template.utils.BackPressable;
@@ -87,6 +88,22 @@ public abstract class BaseFragment extends Fragment implements BackPressable {
 		getActionBar().setDisplayOptions(displayShowTitle);
 	}
 
+	public void showBackButtonOnToolbar() {
+		ActionBar actionBar = getActionBar();
+		if (actionBar != null) {
+			actionBar.setDisplayHomeAsUpEnabled(true);
+			actionBar.setDisplayShowHomeEnabled(true);
+			actionBar.setHomeActionContentDescription("Back");
+		}
+	}
+	public void hideBackButtonOnToolbar() {
+		ActionBar actionBar = getActionBar();
+		if (actionBar != null) {
+			actionBar.setDisplayHomeAsUpEnabled(false);
+			actionBar.setDisplayShowHomeEnabled(false);
+		}
+	}
+
 	protected void showActionBar(boolean isShowActionBar) {
 		if (getActionBar() == null) {
 			return;
@@ -97,6 +114,16 @@ public abstract class BaseFragment extends Fragment implements BackPressable {
 		} else {
 			getActionBar().hide();
 		}
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()){
+			case android.R.id.home:
+				getActivity().onBackPressed();
+				return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 	@Nullable

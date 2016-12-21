@@ -80,7 +80,7 @@ public class SearchFormFragment extends BaseFragment implements SimpleSearchForm
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
 		setTextToActionBar(getString(getActivity().getApplicationInfo().labelRes));
-
+		hideBackButtonOnToolbar();
 		if (savedInstanceState != null) {
 			dialogSegmentNumber = savedInstanceState.getInt(EXTRA_DIALOG_SEGMENT_SHOWED);
 			isComplexSearchSelected = savedInstanceState.getBoolean(EXTRA_IS_COMPLEX_SEARCH_SELECTED);
@@ -136,7 +136,6 @@ public class SearchFormFragment extends BaseFragment implements SimpleSearchForm
 		btnSearch.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				if (true) return; // TODO: 16.12.2016 added by Nick Unuchek:
 				if (getActivity() == null) return;
 
 

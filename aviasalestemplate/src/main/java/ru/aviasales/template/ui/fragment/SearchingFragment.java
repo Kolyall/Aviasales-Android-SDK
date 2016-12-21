@@ -13,9 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.eralp.circleprogressview.CircleProgressView;
 
 import ru.aviasales.adsinterface.AdsInterface;
 import ru.aviasales.core.AviasalesSDK;
@@ -29,11 +29,12 @@ import ru.aviasales.template.utils.SortUtils;
 
 public class SearchingFragment extends BaseFragment {
 
+	private static final int VIEW_LAYOUT = R.layout.searching_fragment;
 	public static final int ANIMATION_FINISH_DURATION = 1000;
 	public static final int PROGRESS_BAR_LENGTH = 1000;
 
-	private ProgressBar progressBar;
 	private LinearLayout mrecContainer;
+	private CircleProgressView mCircleProgressView;
 	private boolean isPaused = false;
 
 	public static SearchingFragment newInstance() {
@@ -47,7 +48,7 @@ public class SearchingFragment extends BaseFragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.searching_fragment, container, false);
+		View rootView = inflater.inflate(VIEW_LAYOUT, container, false);
 
 		setupViews(rootView);
 		showActionBar(true);
@@ -68,10 +69,9 @@ public class SearchingFragment extends BaseFragment {
 	}
 
 	private void setupViews(View rootView) {
-		progressBar = (ProgressBar) rootView.findViewById(R.id.pb_searching);
+		mCircleProgressView = (CircleProgressView) rootView.findViewById(R.id.circle_progress_view);
 		mrecContainer = (LinearLayout) rootView.findViewById(R.id.mrec_container);
 
-		progressBar.setMax(PROGRESS_BAR_LENGTH);
 	}
 
 	@Override
@@ -90,7 +90,7 @@ public class SearchingFragment extends BaseFragment {
 
 					@Override
 					public void onProgressUpdate(int i) {
-						progressBar.setProgress(i);
+						mCircleProgressView.setProgress(i/10);
 					}
 
 					@Override
@@ -139,20 +139,20 @@ public class SearchingFragment extends BaseFragment {
 			return;
 		}
 
-		if (progressBar.getProgress() == progressBar.getMax()) {
+		if (mCircleProgressView.getProgress() == 100) {
 			showResults();
 		}
 
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-			ValueAnimator progressAnimator = ValueAnimator.ofInt(progressBar.getProgress(), PROGRESS_BAR_LENGTH);
+			ValueAnimator progressAnimator = ValueAnimator.ofFloat(mCircleProgressView.getProgress(), PROGRESS_BAR_LENGTH);
 			progressAnimator.setDuration(ANIMATION_FINISH_DURATION);
 			progressAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
 			progressAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
 				@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 				@Override
 				public void onAnimationUpdate(ValueAnimator animation) {
-					int progress = (Integer) animation.getAnimatedValue();
-					progressBar.setProgress(progress);
+					Float progress = (Float) animation.getAnimatedValue();
+					mCircleProgressView.setProgress(progress/10);
 				}
 			});
 			progressAnimator.addListener(new AnimatorListenerAdapter() {

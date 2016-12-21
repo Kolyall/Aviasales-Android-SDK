@@ -39,6 +39,7 @@ import ru.aviasales.template.utils.StringUtils;
 
 public class ResultsFragment extends BaseFragment {
 
+	private static final int VIEW_LAYOUT = R.layout.results_fragment;
 	private static int resultsCount = -1;
 
 	private ResultsRecycleViewAdapter resultsAdapter;
@@ -71,9 +72,10 @@ public class ResultsFragment extends BaseFragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		rootView = inflater.inflate(R.layout.results_fragment, container, false);
+		rootView = inflater.inflate(VIEW_LAYOUT, container, false);
 		setUpViews();
 		setupActionBarCustomView();
+		showBackButtonOnToolbar();
 		return rootView;
 	}
 

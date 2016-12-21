@@ -7,6 +7,7 @@ repositories {
     jcenter()
     mavenCentral()
     maven { url 'http://android.aviasales.ru/repositories/' }
+    maven { url 'https://jitpack.io' }
 }
 
 android {
@@ -14,7 +15,7 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 9
+        minSdkVersion 14
         targetSdkVersion rootProject.ext.targetSdkVersion
     }
 }
@@ -29,6 +30,7 @@ dependencies {
     compile 'ru.aviasales:aviasalesSdk:2.1.7-sdk'
     compile project(':adsinterface')
     compile project(':expandedlistview')
+    compile project(':circle_progress_view')
 
     compile 'com.github.johnkil.android-robototextview:robototextview:2.2.0'
     compile 'com.nineoldandroids:library:2.4.0'

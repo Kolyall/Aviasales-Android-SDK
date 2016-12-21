@@ -4,6 +4,7 @@ repositories {
     jcenter()
     mavenCentral()
     maven { url 'http://android.aviasales.ru/repositories/' }
+    maven { url 'https://jitpack.io' }
 }
 
 android {
@@ -12,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId "ru.aviasales.ads_example"
-        minSdkVersion 11
+        minSdkVersion 14
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0.1"
