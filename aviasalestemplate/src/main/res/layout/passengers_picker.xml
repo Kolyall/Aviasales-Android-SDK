@@ -50,6 +50,7 @@
 			android:textSize="16dp"/>
 
 	<ImageView
+			android:tint="@color/blue_main"
 			android:id="@+id/ic_passenger"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"

@@ -2,6 +2,7 @@ package ru.aviasales.template.ui.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -31,6 +32,7 @@ public class PassengersPickerView extends RelativeLayout {
 	private Integer number;
 
 	private OnChangeListener onChangeListener;
+	private ImageView passengerIcon;
 
 	public PassengersPickerView(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -53,7 +55,7 @@ public class PassengersPickerView extends RelativeLayout {
 		btnDecrease = (PassengerPickerImageView) findViewById(R.id.btn_decrease);
 		btnIncrease = (PassengerPickerImageView) findViewById(R.id.btn_increase);
 		tvNumber = (TextView) findViewById(R.id.tv_number);
-		ImageView passengerIcon = (ImageView) findViewById(R.id.ic_passenger);
+		passengerIcon = (ImageView) findViewById(R.id.ic_passenger);
 
 		tvNumber.setOnTouchListener(new OnTouchListener() {
 			@Override
@@ -64,15 +66,17 @@ public class PassengersPickerView extends RelativeLayout {
 
 		switch (passengerTypeValue) {
 			case ADULTS:
-				passengerIcon.setImageResource(R.drawable.passengers_picker_adults);
+				passengerIcon.setImageResource(R.drawable.ic_adult);
 				break;
 			case CHILDREN:
-				passengerIcon.setImageResource(R.drawable.passengers_picker_children);
+				passengerIcon.setImageResource(R.drawable.ic_child);
 				break;
 			case INFANTS:
-				passengerIcon.setImageResource(R.drawable.passengers_picker_infants);
+				passengerIcon.setImageResource(R.drawable.ic_baby);
 				break;
 		}
+
+		updateTintImageColor();
 
 		btnDecrease.setOnClickListener(new OnClickListener() {
 			@Override
@@ -82,6 +86,7 @@ public class PassengersPickerView extends RelativeLayout {
 						number = 0;
 					}
 					number--;
+					updateTintImageColor();
 					tvNumber.setText(number.toString());
 					onChangeListener.onChange(number, PassengersPickerView.this.getId());
 				}
@@ -96,6 +101,7 @@ public class PassengersPickerView extends RelativeLayout {
 						number = 0;
 					}
 					number++;
+					updateTintImageColor();
 					tvNumber.setText(number.toString());
 					onChangeListener.onChange(number, PassengersPickerView.this.getId());
 				} else if (!isToastShown && passengerTypeValue == INFANTS && number != 8) {
@@ -106,9 +112,18 @@ public class PassengersPickerView extends RelativeLayout {
 		});
 	}
 
+	private void updateTintImageColor() {
+		if (number==null || number == 0){
+            passengerIcon.setColorFilter(ContextCompat.getColor(getContext(), R.color.gray_blue));
+        }else{
+            passengerIcon.setColorFilter(ContextCompat.getColor(getContext(),R.color.blue_main));
+        }
+	}
+
 	public void setDefaultNumber(int number) {
 		this.number = number;
 		tvNumber.setText(String.valueOf(number));
+		updateTintImageColor();
 	}
 
 	public void setOnChangeListener(OnChangeListener onChangeListener) {
@@ -129,6 +144,7 @@ public class PassengersPickerView extends RelativeLayout {
 	public void decreaseNumber() {
 		number--;
 		tvNumber.setText(number.toString());
+		updateTintImageColor();
 	}
 
 	public interface OnChangeListener {

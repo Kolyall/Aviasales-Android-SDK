@@ -19,6 +19,7 @@ public class PassengersDialogFragment extends BaseDialogFragment {
 	public static final int ADULTS_ID = 100;
 	public static final int CHILDREN_ID = 101;
 	public static final int INFANTS_ID = 102;
+	private static final int VIEW_LAYOUT = R.layout.passangers_picker_fragment;
 
 	private int adults;
 	private int children;
@@ -94,7 +95,7 @@ public class PassengersDialogFragment extends BaseDialogFragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View layout = inflater.inflate(R.layout.passangers_picker_fragment, container, false);
+		View layout = inflater.inflate(VIEW_LAYOUT, container, false);
 
 		npAdults = (PassengersPickerView) layout.findViewById(R.id.pp_adults);
 		npChildren = (PassengersPickerView) layout.findViewById(R.id.pp_children);

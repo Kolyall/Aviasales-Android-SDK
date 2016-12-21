@@ -10,7 +10,7 @@
 
 	<dimen name="search_form_search_button_top_margin">20dp</dimen>
 	<dimen name="search_form_search_button_bottom_margin">20dp</dimen>
-	<dimen name="search_form_passengers_margin_right">48dp</dimen>
+	<dimen name="search_form_passengers_margin_right">38dp</dimen>
 	<dimen name="search_form_trip_class_margin_bottom">12dp</dimen>
 
 	<dimen name="select_airport_item_height">48dp</dimen>
