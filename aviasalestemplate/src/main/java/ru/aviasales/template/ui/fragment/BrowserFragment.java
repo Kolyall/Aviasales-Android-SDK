@@ -39,6 +39,7 @@ public class BrowserFragment extends BaseFragment {
 	public static final String TITLE = "BROWSER_TITLE";
 	public static final String REFERER_HEADER = "Referer";
 	public static final String HTTP = "http://";
+	private static final int VIEW_LAYOUT = R.layout.browser_fragment;
 
 	private boolean needToDismissDialog = false;
 	private WebView webView;
@@ -79,11 +80,13 @@ public class BrowserFragment extends BaseFragment {
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		ViewGroup layout = (ViewGroup) inflater.inflate(R.layout.browser_fragment, container, false);
+		ViewGroup layout = (ViewGroup) inflater.inflate(VIEW_LAYOUT, container, false);
 		setupViews(layout);
 
 		getActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_TITLE);
 		setTextToActionBar(title);
+
+		showBackButtonOnToolbar();
 
 		return layout;
 	}

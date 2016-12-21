@@ -105,8 +105,7 @@ public class ResultsFragment extends BaseFragment {
 
 		final ResultsRecycleViewAdapter proposalsAdapter = createOrRefreshAdapter();
 		adAdapter = createAdAdapter(proposalsAdapter);
-//		resultsListView.setAdapter(adAdapter);//// TODO: 21.12.2016 added by Nick Unuchek:
-		resultsListView.setAdapter(resultsAdapter);//// TODO: 21.12.2016 added by Nick Unuchek:
+		resultsListView.setAdapter(adAdapter);
 
 		proposalsAdapter.setListener(new ResultsRecycleViewAdapter.OnClickListener() {
 			@Override
@@ -122,12 +121,14 @@ public class ResultsFragment extends BaseFragment {
 		AdAdapter adAdapter = new AdAdapter(adapter, new AdsManager.AdListener() {
 			@Override
 			public void onAdBannerPressed() {
-				AdsManager instance = AdsManager.getInstance();
-				if (instance.useInternalBrowser()) {
-					BrowserUtils.openInternalBrowser(getActivity(), instance.getFullAdsUrl(), instance.getResultsAdsBrowserTitle(), null, false);
-				} else {
-					BrowserUtils.openExternalBrowser(getActivity(), instance.getFullAdsUrl(), null);
-				}
+				// TODO: 21.12.2016 added by Nick Unuchek:
+				BrowserUtils.openBrowser(getActivity(), "http://tystore.ru/zddCdG", getString(R.string.app_name),null,true);
+//				AdsManager instance = AdsManager.getInstance();
+//				if (instance.useInternalBrowser()) {
+//					BrowserUtils.openInternalBrowser(getActivity(), instance.getFullAdsUrl(), instance.getResultsAdsBrowserTitle(), null, false);
+//				} else {
+//					BrowserUtils.openExternalBrowser(getActivity(), instance.getFullAdsUrl(), null);
+//				}
 			}
 		});
 		AdsInterface adsInterface = AdsImplKeeper.getInstance().getAdsInterface();
@@ -249,8 +250,7 @@ public class ResultsFragment extends BaseFragment {
 				AviasalesSDK.getInstance().getSearchParamsOfLastSearch().isComplexSearch(), new ResultsSortingDialog.OnSortingChangedListener() {
 					@Override
 					public void onSortingChanged(int sortingType) {
-//						resultsListView.setAdapter(adAdapter);
-						resultsListView.setAdapter(resultsAdapter);// TODO: 21.12.2016 added by Nick Unuchek:
+						resultsListView.setAdapter(adAdapter);
 						resultsAdapter.sortProposals(sortingType);
 						dismissDialog();
 					}

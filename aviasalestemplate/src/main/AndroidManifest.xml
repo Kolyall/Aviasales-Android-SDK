@@ -6,7 +6,7 @@
         <activity
             android:name="ru.aviasales.template.BrowserActivity"
             android:configChanges="orientation|screenSize"
-            android:theme="@style/AviasalesTemplateTheme">
+            >
         </activity>
 
         <meta-data

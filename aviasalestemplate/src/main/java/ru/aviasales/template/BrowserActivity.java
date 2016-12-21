@@ -11,6 +11,7 @@ import ru.aviasales.template.ui.fragment.BrowserFragment;
 public class BrowserActivity extends AppCompatActivity {
 	public static final String SHOW_LOADING_DIALOG = "show_loading_dialog";
 	public static final String HOST = "HOST";
+	private static final int FRAGMENT_CONTAINER = R.id.fragment_child_place;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +23,8 @@ public class BrowserActivity extends AppCompatActivity {
 	private void initFragment() {
 		FragmentManager fm = getSupportFragmentManager();
 		FragmentTransaction fragmentTransaction = fm.beginTransaction();
-		fragmentTransaction.replace(R.id.fragment_child_place, BrowserFragment.newInstance(needToShowLoadingDialog(), getHost()), null);
+		BrowserFragment fragment = BrowserFragment.newInstance(needToShowLoadingDialog(), getHost());
+		fragmentTransaction.replace(FRAGMENT_CONTAINER, fragment, null);
 		fragmentTransaction.commit();
 	}
 

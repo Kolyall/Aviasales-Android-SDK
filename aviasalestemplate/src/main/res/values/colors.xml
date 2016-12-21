@@ -18,7 +18,7 @@
 	<color name="white">#FFFFFF</color>
 	<color name="yellow_FDCC50">#FDCC50</color>
 
-	<color name="blue_00B0DD">#00B0DD</color>
+	<color name="blue_00B0DD">#3F51B5</color>
 	<color name="blue_009DC5">#009DC5</color>
 
 	<color name="gray_blue">#90A4AE</color>
@@ -57,8 +57,8 @@
 	<color name="gray_757575">#757575</color>
 	<color name="gray_797979">#797979</color>
 
-	<color name="colorAsPrimary">@color/gray_blue</color>
-	<color name="colorAsPrimaryDark">@color/gray_blue_dark</color>
+	<color name="colorAsPrimary">@color/blue_main</color>
+	<color name="colorAsPrimaryDark">@color/blue_main</color>
 	<color name="colorAviasalesMain">@color/blue_main</color>
 
 	<color name="aviasales_results_background">@color/grey_background</color>
