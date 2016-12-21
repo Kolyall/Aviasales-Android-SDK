@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Android Utils</string>
+    <string name="hour_short">h</string>
+    <string name="minute_short">m</string>
+</resources>

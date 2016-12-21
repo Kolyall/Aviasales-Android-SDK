@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.text.TextUtils;
 
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class Utils {
 	}
 
 	public static String capitalizeFirstLetter(String original) {
-		if (original.length() == 0)
+		if (TextUtils.isEmpty(original))
 			return original;
 		return original.substring(0, 1).toUpperCase() + original.substring(1);
 	}

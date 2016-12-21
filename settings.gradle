@@ -1,2 +1,2 @@
-include ':simple_demo', ':expandedlistview', ':aviasalestemplate', ':navdrawer_demo', ':appodeallib', ':adsinterface', ':ads_simple_demo', ':circle_progress_view'
+include ':simple_demo', ':expandedlistview', ':aviasalestemplate', ':navdrawer_demo', ':appodeallib', ':adsinterface', ':ads_simple_demo', ':circle_progress_view', ':utils'
 project(':circle_progress_view').projectDir = new File('circle_progress_view')
