@@ -20,12 +20,12 @@ public class AdAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 	private static final int AS_BANNER_POSITION = 0;
 	private static final int APPODEAL_BANNER_POSITION = 3;
 
-	private final RecyclerView.Adapter baseAdapter;
+	private final ResultsRecycleViewAdapter baseAdapter;
 	private final AdsManager.AdListener adListener;
 	private boolean shouldShowAppodealAdBanner = false;
 	private boolean shouldShowAsBanner = false;
 
-	public AdAdapter(RecyclerView.Adapter baseAdapter, AdsManager.AdListener adListener) {
+	public AdAdapter(ResultsRecycleViewAdapter baseAdapter, AdsManager.AdListener adListener) {
 		this.baseAdapter = baseAdapter;
 		this.adListener = adListener;
 

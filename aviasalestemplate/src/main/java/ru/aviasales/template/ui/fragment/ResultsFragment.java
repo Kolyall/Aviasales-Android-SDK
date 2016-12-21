@@ -94,25 +94,25 @@ public class ResultsFragment extends BaseFragment {
 	private void setUpViews() {
 
 		resultsListView = (RecyclerView) rootView.findViewById(R.id.lv_results);
-		setUpListView(resultsListView);
+		setUpListView();
 		resultsListView.setHasFixedSize(true);
 
 		resultsListView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
 	}
 
-	private void setUpListView(RecyclerView listView) {
+	private void setUpListView() {
 
 		final ResultsRecycleViewAdapter proposalsAdapter = createOrRefreshAdapter();
 		adAdapter = createAdAdapter(proposalsAdapter);
-		listView.setAdapter(adAdapter);
+//		resultsListView.setAdapter(adAdapter);//// TODO: 21.12.2016 added by Nick Unuchek:
+		resultsListView.setAdapter(resultsAdapter);//// TODO: 21.12.2016 added by Nick Unuchek:
 
 		proposalsAdapter.setListener(new ResultsRecycleViewAdapter.OnClickListener() {
 			@Override
 			public void onClick(final Proposal proposal, int position) {
-				if (getActivity() == null) return;
-
-				showDetails(proposal);
+//				if (getActivity() == null) return;
+//				showDetails(proposal);// TODO: 21.12.2016 added by Nick Unuchek:
 			}
 		});
 		proposalsAdapter.sortProposals(SortUtils.getSavedSortingType());
@@ -249,7 +249,8 @@ public class ResultsFragment extends BaseFragment {
 				AviasalesSDK.getInstance().getSearchParamsOfLastSearch().isComplexSearch(), new ResultsSortingDialog.OnSortingChangedListener() {
 					@Override
 					public void onSortingChanged(int sortingType) {
-						resultsListView.setAdapter(adAdapter);
+//						resultsListView.setAdapter(adAdapter);
+						resultsListView.setAdapter(resultsAdapter);// TODO: 21.12.2016 added by Nick Unuchek:
 						resultsAdapter.sortProposals(sortingType);
 						dismissDialog();
 					}
