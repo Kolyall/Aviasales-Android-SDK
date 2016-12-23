@@ -110,8 +110,8 @@ public class ResultsFragment extends BaseFragment {
 		proposalsAdapter.setListener(new ResultsRecycleViewAdapter.OnClickListener() {
 			@Override
 			public void onClick(final Proposal proposal, int position) {
-//				if (getActivity() == null) return;
-//				showDetails(proposal);// TODO: 21.12.2016 added by Nick Unuchek:
+				if (getActivity() == null) return;
+				showDetails(proposal);
 			}
 		});
 		proposalsAdapter.sortProposals(SortUtils.getSavedSortingType());
