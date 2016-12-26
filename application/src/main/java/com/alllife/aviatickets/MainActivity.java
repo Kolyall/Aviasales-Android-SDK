@@ -1,4 +1,4 @@
-package ru.aviasales.alllife;
+package com.alllife.aviatickets;
 
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;

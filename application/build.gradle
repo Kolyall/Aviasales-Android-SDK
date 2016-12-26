@@ -21,24 +21,36 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        applicationId "ru.aviasales.alllife"
-        minSdkVersion 21
+        applicationId "com.alllife.aviatickets"
+        minSdkVersion 14
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0.1"
         multiDexEnabled true
 
     }
+    signingConfigs {
+        //release
+        release {
+            storeFile file("/keys/key_alllife_aviatickets.jks")
+            storePassword "key_alllife_aviatickets"
+            keyAlias "key_alllife_aviatickets"
+            keyPassword "key_alllife_aviatickets"
+        }
+    }
+
     buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            debuggable false
+        }
         debug {
             ext.betaDistributionNotifications = true
             ext.betaDistributionGroupAliases = "as-android-dev"
             versionNameSuffix "debug"
-        }
-
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 
