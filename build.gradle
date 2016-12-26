@@ -22,6 +22,6 @@ ext {
 	compileSdkVersion = 24
 	targetSdkVersion = 24
 	buildToolsVersion = '24.0.0'
-	gmsVersion = '8.4.0'
+	gmsVersion = '10.0.1'
 	supportVersion = '24.2.0'
 }
