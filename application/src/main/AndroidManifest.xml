@@ -18,7 +18,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name="android.support.multidex.MultiDexApplication"
+        android:name=".TheApplication"
         android:theme="@style/AppTheme">
         <activity
             android:name="com.alllife.aviatickets.MainActivity"
@@ -28,6 +28,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="52efd19573b8edab9dce58001b3ea1da9be93d94" />
     </application>
 
 </manifest>

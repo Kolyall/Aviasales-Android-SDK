@@ -1,4 +1,14 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
 
 repositories {
     jcenter()
@@ -12,6 +22,7 @@ repositories {
             password mavenPassword
         }
     }
+    maven { url 'https://maven.fabric.io/public' }
 }
 
 def gitBranch = 'git rev-parse --abbrev-ref HEAD'.execute().text.trim()
@@ -82,4 +93,7 @@ dependencies {
 //    compile project(':module_appodeallib')
     compile "com.google.android.gms:play-services-ads:$rootProject.ext.gmsVersion"
     compile 'com.android.support:multidex:1.0.1'
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.5@aar') {
+        transitive = true;
+    }
 }

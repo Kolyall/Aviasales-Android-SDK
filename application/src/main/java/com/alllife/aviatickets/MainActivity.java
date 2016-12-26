@@ -5,6 +5,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 import ru.aviasales.core.AviasalesSDK;
 import ru.aviasales.core.identification.IdentificationData;
 import ru.aviasales.template.ui.fragment.AviasalesFragment;
@@ -18,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Fabric.with(this, new Crashlytics());
 
 		AviasalesSDK.getInstance().init(this, new IdentificationData(getString(R.string.travel_payouts_marker), getString(R.string.travel_payouts_token)));
 		setContentView(VEIW_LAYOUT);
