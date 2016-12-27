@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'android-apt'
 project.group = GROUP
 version = VERSION_NAME
 
@@ -36,6 +36,19 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
     compile "com.google.android.gms:play-services-ads:$rootProject.ext.gmsVersion"
+
+    // dagger
+    compile 'com.google.dagger:dagger:2.6.1'
+    apt 'com.google.dagger:dagger-compiler:2.6.1'
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+    compile 'javax.annotation:jsr250-api:1.0'
+    compile 'com.android.support:multidex:1.0.1'
+    // FragmentWithArgs
+    compile 'com.hannesdorfmann.fragmentargs:annotation:3.0.2'
+    apt 'com.hannesdorfmann.fragmentargs:processor:3.0.2'
+    //lombok
+    provided "org.projectlombok:lombok:1.16.10"
+    apt "org.projectlombok:lombok:1.16.10"
 }
 
 apply plugin: 'maven'

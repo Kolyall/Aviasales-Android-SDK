@@ -19,7 +19,7 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/best_price_container">
 
-            <ru.aviasales.template.ui.view.TicketView
+            <com.avia.application.ui.view.TicketView
                 android:id="@+id/ticket"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -77,7 +77,7 @@
                 android:text="@string/ticket_buy_btn_txt_full"
                 android:textColor="@color/white" />
 
-            <ru.aviasales.template.ui.view.AgencySpinner
+            <com.avia.application.ui.view.AgencySpinner
                 android:id="@+id/agency_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

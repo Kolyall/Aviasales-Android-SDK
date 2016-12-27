@@ -6,27 +6,27 @@ import android.view.View;
 
 
 public interface AdsInterface {
-	void setStartAdsEnabled(boolean startAdsEnabled);
+    void setWaitingScreenAdsEnabled(boolean waitingScreenAdsEnabled);
 
-	void setWaitingScreenAdsEnabled(boolean waitingScreenAdsEnabled);
+    void setStartAdsEnabled(boolean startAdsEnabled);
 
-	void setResultsAdsEnabled(boolean resultsAdsEnabled);
+    void showStartAdsIfAvailable(final Activity activity);
 
-	void showStartAdsIfAvailable(final Activity activity);
+    void setResultsAdsEnabled(boolean resultsAdsEnabled);
 
-	@Nullable
-	View getMrecView(Activity activity);
+    void showWaitingScreenAdsIfAvailable(Activity activity);
 
-	void showWaitingScreenAdsIfAvailable(Activity activity);
+    @Nullable
+    View getMrecView(Activity activity);
 
-	@Nullable
-	View getNativeAdView(Activity activity);
+    @Nullable
+    View getNativeAdView(Activity activity);
 
-	boolean isStartAdsEnabled();
+    boolean isStartAdsEnabled();
 
-	boolean isWaitingScreenAdsEnabled();
+    boolean isWaitingScreenAdsEnabled();
 
-	boolean isResultsAdsEnabled();
+    boolean isResultsAdsEnabled();
 
-	boolean areResultsReadyToShow();
+    boolean areResultsReadyToShow();
 }

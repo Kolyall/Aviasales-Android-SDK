@@ -4,7 +4,7 @@
 	<color name="colorAsPrimaryDark">#78909C</color>
 	<color name="colorAviasalesMain">@color/color_primary</color>
 
-	<color name="color_primary">#3F51B5</color>
-	<color name="color_primary_dark">#3F51B5</color>
-	<color name="color_control_activated">#3F51B5</color>
+	<color name="color_primary">#4050b6</color>
+	<color name="color_primary_dark">#4050b6</color>
+	<color name="color_control_activated">#4050b6</color>
 </resources>
