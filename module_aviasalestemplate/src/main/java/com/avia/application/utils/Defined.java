@@ -59,7 +59,7 @@ public class Defined extends CoreDefined {
 			aMap.put("JPY", "Японская йена");
 			aMap.put("AZN", "Азербайджанский манат");
 			aMap.put("AMD", "Армянский драм");
-			aMap.put("BYR", "Белорусский рубль");
+			aMap.put("BYN", "Белорусский рубль");
 			aMap.put("KGS", "Киргизский сом");
 			aMap.put("MDL", "Молдавский лей");
 			aMap.put("TJS", "Таджикский сомони");
@@ -86,7 +86,7 @@ public class Defined extends CoreDefined {
 		CURRENCY_MAP = Collections.unmodifiableMap(aMap);
 	}
 
-	private static final String AIRLINE_LOGO_TEMPLATE_URL = "http://pics.avs.io/{Width}/{Height}/{IATA}.png";
+	private static final String AIRLINE_LOGO_TEMPLATE_URL = "https://{SearchUrl}/images/airline/{Width}/{Height}/{IATA}.png";
 
 	public static String getAirlineLogoTemplateUrl() {
 		return getUrl(AIRLINE_LOGO_TEMPLATE_URL);

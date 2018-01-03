@@ -1,11 +1,12 @@
 package com.avia.application.api;
 
+import com.avia.application.api.params.AirlineLogoParams;
+import com.avia.application.utils.Defined;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 
-import com.avia.application.api.params.AirlineLogoParams;
-import com.avia.application.utils.Defined;
+import ru.aviasales.core.AviasalesSDK;
 
 
 public class AirlineLogoApi {
@@ -17,19 +18,20 @@ public class AirlineLogoApi {
             .build();
 
     public void getAirlineLogo(final AirlineLogoParams params) {
+        String searchHost = AviasalesSDK.getInstance().getSdkHost();
         ImageLoader.getInstance()
-                .displayImage(getUrl(params.getIata(), params.getWidth(), params.getHeight()), params.getImage(), displayOptions, params.getImageLoadingListener());
+                .displayImage(
+                        getUrl(params.getIata(), params.getWidth(), params.getHeight(), searchHost),
+                        params.getImage(),
+                        displayOptions,
+                        params.getImageLoadingListener());
     }
 
-    public void loadAirlineLogo(final AirlineLogoParams params) {
-        ImageLoader.getInstance()
-                .loadImage(getUrl(params.getIata(), params.getWidth(), params.getHeight()), params.getImageLoadingListener());
-    }
-
-    public static String getUrl(String iata, int logoWidth, int logoHeight) {
+    public static String getUrl(String iata, int logoWidth, int logoHeight, String searchUrl) {
         return Defined.getAirlineLogoTemplateUrl()
                 .replace("{Width}", String.valueOf(logoWidth))
                 .replace("{Height}", String.valueOf(logoHeight))
+                .replace("{SearchUrl}", searchUrl)
                 .replace("{IATA}", iata);
     }
 }

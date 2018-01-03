@@ -10,7 +10,7 @@ import com.crashlytics.android.Crashlytics;
 
 import io.fabric.sdk.android.Fabric;
 import ru.aviasales.core.AviasalesSDK;
-import ru.aviasales.core.identification.IdentificationData;
+import ru.aviasales.core.identification.SdkConfig;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         Fabric.with(this, new Crashlytics());
 
         AviasalesSDK.getInstance()
-                .init(this, new IdentificationData(getString(R.string.travel_payouts_marker), getString(R.string.travel_payouts_token)));
+                .init(this, new SdkConfig(getString(R.string.travel_payouts_marker), getString(R.string.travel_payouts_token), getString(R.string.travel_sdk_host)));
         setContentView(VEIW_LAYOUT);
 
         init();
