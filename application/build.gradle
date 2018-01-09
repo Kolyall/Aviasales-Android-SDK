@@ -32,7 +32,7 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        applicationId "com.alllife.aviatickets"
+        applicationId "com.alllife.avia.tickets"
         minSdkVersion 14
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
