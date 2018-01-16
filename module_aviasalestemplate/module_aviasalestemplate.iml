@@ -85,7 +85,6 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/res" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/rs" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/shaders" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/symbols" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/transforms" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/typedefs.txt" />
       <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
@@ -129,9 +128,6 @@
     <orderEntry type="library" exported="" name="com.nostra13.universalimageloader:universal-image-loader:1.9.3@jar" level="project" />
     <orderEntry type="library" exported="" name="com.android.support:support-vector-drawable-25.1.1" level="project" />
     <orderEntry type="library" exported="" name="com.android.support:support-annotations:25.3.1@jar" level="project" />
-    <orderEntry type="module" module-name="module_ads_interface" exported="" />
-    <orderEntry type="module" module-name="module_expandedlistview" exported="" />
-    <orderEntry type="module" module-name="module_circle_progress_view" exported="" />
     <orderEntry type="module" module-name="module_ads_interface" exported="" />
     <orderEntry type="module" module-name="module_expandedlistview" exported="" />
     <orderEntry type="module" module-name="module_circle_progress_view" exported="" />
